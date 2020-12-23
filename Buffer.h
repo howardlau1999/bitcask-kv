@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <algorithm>
 #include <cstring>
+#include <string>
 
 class Buffer {
 public:
@@ -21,20 +22,20 @@ public:
         std::swap(m_iWriterIndex, aRhs.m_iWriterIndex);
     }
 
-    size_t readableBytes() const { 
+    size_t readableBytes() const {
         return m_iWriterIndex - m_iReaderIndex;
     }
 
-    size_t writableBytes() const { 
+    size_t writableBytes() const {
         return m_vecBuffer.size() - m_iWriterIndex;
     }
 
-    size_t prependableBytes() const { 
-        return m_iReaderIndex; 
+    size_t prependableBytes() const {
+        return m_iReaderIndex;
     }
 
-    const char* peek() const { 
-        return begin() + m_iReaderIndex; 
+    const char* peek() const {
+        return begin() + m_iReaderIndex;
     }
 
     const char* findEOL() const {
@@ -91,12 +92,12 @@ public:
         }
     }
 
-    char* beginWrite() { 
-        return begin() + m_iWriterIndex; 
+    char* beginWrite() {
+        return begin() + m_iWriterIndex;
     }
 
-    const char* beginWrite() const { 
-        return begin() + m_iWriterIndex; 
+    const char* beginWrite() const {
+        return begin() + m_iWriterIndex;
     }
 
     void hasWritten(size_t aLen) {
@@ -131,7 +132,7 @@ public:
 
 private:
 
-    char* begin() { 
+    char* begin() {
         return &*m_vecBuffer.begin();
     }
 

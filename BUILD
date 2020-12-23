@@ -26,7 +26,8 @@ cc_library(
         'Cache.h',
         'EventLoopThread.h',
         'WorkQueue.h',
-        'Thread.h'
+        'Thread.h',
+        'Utils.h'
     ],
     copts = [
         '-std=c++11',
