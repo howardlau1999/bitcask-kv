@@ -25,7 +25,7 @@ int SimpleKVLRUCache::set(std::string const& aKey, std::string const& aValue) {
 
     auto it = mCache.find(aKey);
     if (it == mCache.end()) {
-        if (lstLRU.size() >= m_iCapacity) {
+        if (lstLRU.size() >= (std::size_t)m_iCapacity) {
             mCache.erase(lstLRU.back().strKey);
             lstLRU.pop_back();
         }

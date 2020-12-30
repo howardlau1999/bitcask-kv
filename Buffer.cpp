@@ -21,7 +21,7 @@ ssize_t Buffer::readFd(int aFd, int* apSavedErrno) {
         }
         perror("readFd");
         abort();
-    } else if (iBytesRead <= ulWritable) {
+    } else if (iBytesRead <= (long int)ulWritable) {
         m_iWriterIndex += iBytesRead;
     } else {
         m_iWriterIndex = m_vecBuffer.size();

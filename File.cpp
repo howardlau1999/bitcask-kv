@@ -21,7 +21,7 @@ File::~File() {
 }
 
 int File::read(void* aBuf, size_t aBytes, off_t aOffset) const {
-    if (m_bReadOnly && m_pMMapped != MAP_FAILED && aOffset + aBytes < m_iMMappedLength) {
+    if (m_bReadOnly && m_pMMapped != MAP_FAILED && (int)(aOffset + aBytes) < m_iMMappedLength) {
         // Use mmapped address
         memcpy(aBuf, (char*) m_pMMapped + aOffset, aBytes);
         return aBytes;

@@ -98,12 +98,12 @@ void EventLoop::queueInLoop(std::function<void()> cb) {
 
 void EventLoop::wakeup() {
     uint64_t ulOne = 1;
-    ssize_t n = ::write(m_iEventFd, &ulOne, sizeof(ulOne));
+    ::write(m_iEventFd, &ulOne, sizeof(ulOne));
 }
 
 void EventLoop::handleRead() {
     uint64_t ulOne = 1;
-    ssize_t n = ::read(m_iEventFd, &ulOne, sizeof(ulOne));
+    ::read(m_iEventFd, &ulOne, sizeof(ulOne));
 }
 
 void EventLoop::quit() {

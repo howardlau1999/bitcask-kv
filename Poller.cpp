@@ -19,10 +19,10 @@ Poller::~Poller() {
 
 void Poller::poll(int aTimeoutMs, std::vector<Channel*>& aActiveChannels) {
     int numEvents = ::epoll_wait(m_iPollFd, &*m_vecEvents.begin(), m_vecEvents.size(), aTimeoutMs);
-    int savedErrno = errno;
+    // int savedErrno = errno;
     if (numEvents > 0) {
         fillActiveChannels(numEvents, aActiveChannels);
-        if (numEvents == m_vecEvents.size()) {
+        if ((std::size_t)numEvents == m_vecEvents.size()) {
             m_vecEvents.resize(m_vecEvents.size() * 2);
         }
     } else if (numEvents < 0) {
